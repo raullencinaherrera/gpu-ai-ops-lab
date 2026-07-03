@@ -1,0 +1,27 @@
+﻿{
+  "cluster": "dgx-lab-01",
+  "site": "lab",
+  "nodes": [
+    {
+      "name": "dgx-node-01",
+      "type": "DGX",
+      "rack": "rack-a01",
+      "gpus": ["gpu0", "gpu1", "gpu2", "gpu3"],
+      "ib_switch": "ib-switch-01"
+    },
+    {
+      "name": "dgx-node-02",
+      "type": "DGX",
+      "rack": "rack-a01",
+      "gpus": ["gpu0", "gpu1", "gpu2", "gpu3"],
+      "ib_switch": "ib-switch-01"
+    }
+  ],
+  "switches": [
+    {
+      "name": "ib-switch-01",
+      "type": "infiniband",
+      "vendor": "NVIDIA"
+    }
+  ]
+}

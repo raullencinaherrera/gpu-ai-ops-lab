@@ -1,0 +1,27 @@
+﻿name: overheating
+description: GPU temperature rises while fan speed drops
+severity: critical
+node: dgx-node-01
+gpu: gpu2
+steps:
+  - temperature: 72
+    fan_speed: 78
+    power: 310
+    utilization: 82
+    ecc_errors: 0
+  - temperature: 79
+    fan_speed: 68
+    power: 335
+    utilization: 91
+    ecc_errors: 0
+  - temperature: 86
+    fan_speed: 54
+    power: 360
+    utilization: 96
+    ecc_errors: 1
+  - temperature: 92
+    fan_speed: 42
+    power: 380
+    utilization: 98
+    ecc_errors: 3
+expected_decision: drain_node_and_investigate_cooling
