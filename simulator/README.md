@@ -1,107 +1,16 @@
-# GPU AI Ops Lab
+# NVIDIA GPU Simulator
 
-GPU AI Ops Lab is a simulated NVIDIA GPU infrastructure designed to reproduce realistic operational scenarios for observability, event processing and AI-driven operations.
-
-It is part of a modular AIOps platform composed of three independent projects:
-
-```
-GPU AI Ops Lab
-        │
-        ▼
-AI Event Processor
-        │
-        ▼
-AI Operations Engine
-```
-
-The lab continuously generates infrastructure telemetry and operational events that can be consumed by monitoring systems, event processors and AI agents.
-
----
-
-## Purpose
-
-The objective of this project is to provide a realistic playground for experimenting with:
-
-- NVIDIA GPU infrastructure monitoring
-- Prometheus metrics
-- Grafana dashboards
-- Operational event generation
-- Event normalization
-- AI-assisted incident analysis
-- Root cause analysis
-- Automated remediation
-- AIOps workflows
-
-Unlike a simple metrics simulator, this laboratory reproduces realistic infrastructure behaviour that can be used to validate complete AI Operations pipelines.
-
----
-
-## AIOps Platform
-
-This repository belongs to the following ecosystem:
-
-| Repository | Purpose |
-|------------|---------|
-| GPU AI Ops Lab | Simulates GPU infrastructure, telemetry and incidents |
-| AI Event Processor | Normalizes, enriches and correlates operational events |
-| AI Operations Engine | Performs AI reasoning, decision making and remediation planning |
-
-Each repository has a single responsibility, allowing every component to evolve independently.
-
----
+Python application that simulates an NVIDIA DGX infrastructure and exposes Prometheus metrics.
 
 ## Features
 
-### Infrastructure Simulation
-
-- Multiple DGX nodes
-- NVIDIA GPUs
-- Rack health
-- CDU health
-- Power consumption
-- GPU utilization
-- GPU temperatures
-- GPU memory
-- Cluster topology
-
-### Observability
-
-- Prometheus exporter
-- Grafana dashboards
-- Historical metrics
-- Infrastructure state
-
-### Event Simulation
-
-- GPU overheating
-- ECC errors
-- Cooling failures
-- Power anomalies
-- Future InfiniBand failures
-- Future storage incidents
-
-### AI Integration
-
-Designed to integrate with:
-
-- AI Event Processor
-- AI Operations Engine
-
----
-
-## Repository Structure
-
-```
-gpu-ai-ops-lab/
-
-├── simulator/
-├── scenarios/
-├── topology/
-├── monitoring/
-├── docs/
-├── data/
-└── docker-compose.yml
-```
+- Simulates multiple DGX nodes
+- Simulates GPU temperatures
+- Simulates GPU utilization
+- Simulates GPU memory usage
+- Simulates power consumption
+- Simulates rack and CDU health
+- Exposes metrics in Prometheus format
 
 ---
 
@@ -147,7 +56,7 @@ python -m pip install -r requirements.txt
 python app.py
 ```
 
-The simulator starts on:
+The simulator will start on:
 
 ```
 http://localhost:8000
@@ -161,49 +70,38 @@ http://localhost:8000/metrics
 
 ---
 
-## Prometheus
+## Example metrics
 
-Example configuration:
+- nvidia_gpu_temperature_celsius
+- nvidia_gpu_utilization_percent
+- nvidia_gpu_memory_used_mb
+- nvidia_gpu_power_watts
+- nvidia_gpu_health_status
+- nvidia_cdu_health_status
+- nvidia_rack_temperature_celsius
+
+---
+
+## Connect to Prometheus
+
+Configure your `prometheus.yml`:
 
 ```yaml
 scrape_configs:
-  - job_name: gpu-ai-ops-lab
-
+  - job_name: "nvidia-simulator"
     static_configs:
       - targets:
           - host.docker.internal:8000
 ```
 
-Example queries:
+Then query metrics such as:
 
 ```promql
 nvidia_gpu_temperature_celsius
-
-max(nvidia_gpu_temperature_celsius)
-
-avg(nvidia_gpu_power_watts)
 ```
 
----
+or
 
-## Roadmap
-
-Current development focuses on building a complete Digital Twin of an NVIDIA GPU infrastructure.
-
-Planned capabilities include:
-
-- Dynamic cluster topology
-- Scenario engine
-- Chaos engineering
-- Historical event replay
-- Predictive failures
-- AI-driven recommendations
-- Rundeck integration
-- Autonomous remediation
-- Kubernetes deployment
-
----
-
-## License
-
-MIT
+```promql
+max(nvidia_gpu_temperature_celsius)
+```
