@@ -1,5 +1,13 @@
 # GPU AI Ops Lab
 
+> This repository is part of a broader AI Operations platform.
+
+## Related Projects
+
+- 🚀 **AI Operations Engine** – https://github.com/raullencinaherrera/ai-operations-engine
+- ⚙️ **AI Event Processor** – https://github.com/raullencinaherrera/ai-event-processor
+- 🔧 **Rundeck Execution Layer** – https://github.com/raullencinaherrera/rundeck-execution-layer
+
 GPU AI Ops Lab is a laboratory for simulating NVIDIA GPU infrastructures and generating realistic telemetry, metrics and operational incidents for AI Operations (AIOps) platforms.
 
 Rather than being just a GPU simulator, this project acts as the entry point of an end-to-end AIOps ecosystem, providing realistic infrastructure behaviour that can be consumed by monitoring systems, event processors and AI decision engines.
